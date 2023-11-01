@@ -10,13 +10,11 @@ rests = spark.read.csv("hdfs://172.19.0.2:9000/improved_restaurants.csv", header
 
 #configure columns using left join to merge address and address_x 
 joinDF = hotels.join(rests, hotels['address'] == rests['address_x'], 'left')
-
 #Add rests columns for restaurants
 joinDF = joinDF.withColumn("rests", when(joinDF['restname'].isNotNull(), joinDF['restname']).otherwise(''))
 
 #Include all relevant columns for the final csv
 hotels_rests = joinDF.select("name","url","address","airport","distance","unit","rating","lat","long","rests")
-
 
 #look only for hotels with restaurants
 fourStarhotels = hotels_rests.filter(hotels_rests['rests'] != "")
