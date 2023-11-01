@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-
+import pydoop.hdfs as hdfs
 from pyspark.sql.functions import when
 
 # Initialize a Spark session
