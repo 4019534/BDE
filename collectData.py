@@ -148,19 +148,19 @@ print(f"Flight Time: {time_difference.days} days, {hours} hours, {minutes} minut
 print()
 flightTime = (hours*3600) + (minutes*60) + seconds
 estimatedDT = travelTime + flightTime
-print("Estimated delivery duration: " + str(estimatedDT))
+print("Estimated delivery duration: " + str(estimatedDT) + " seconds.")
 if ptype == "rain":
     print("There will be a " + str(pchance) + "percent chance of " + str(ptype) + " and as such we consider a " + str(rain) + "% time buffer for our delivery estimate.")
     offset = rain
     offset = estimatedDT/offset
     estimatedDT = estimatedDT + offset
-    print("Estimated delivery duration:" + str(estimatedDT))
+    print("Estimated delivery duration:" + str(estimatedDT) + " seconds.")
 elif ptype == "snow":
     print("There will be a " + str(pchance) + "percent chance of " + str(ptype) + " and as such we consider a " + str(snow) + "% time buffer for our delivery estimate.")
     offset = snow
     offset = estimatedDT/offset
     estimatedDT = estimatedDT + offset
-    print("Estimated delivery duration:" + str(estimatedDT))
+    print("Estimated delivery duration:" + str(estimatedDT) + " seconds.")
 
 
 rest_hours = input("Enter opening time of restaurant (HH:MM): ")
@@ -176,5 +176,5 @@ departure_date_time_str = departure_datetime.strftime("%Y-%m-%d")
 
 departure_time_str = departure_time.strftime("%H:%M")
 
-print(f"Departure date and time: {departure_date_time_str}")
+print(f"Departure date: {departure_date_time_str}")
 print(f"Departure time: {departure_time_str}")
