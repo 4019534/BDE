@@ -42,7 +42,7 @@ file1_updated_df = spark.read.csv("hotels_rests.csv", header=True, inferSchema=T
 
 # Filter the DataFrame to exclude rows where 'rests' is empty
 filtered_df = file1_updated_df.filter(file1_updated_df['rests'] != "")
-filtered_df = filtered_df.filter(df["rating"] == 4.0)
+filtered_df = filtered_df.filter(df["rating"] == "4.0")
 # Save the filtered DataFrame to a new CSV file
 filtered_df.write.csv("hdfs://172.19.0.2:9000/onlyhotels_rests.csv", header=True, mode="overwrite")
 
