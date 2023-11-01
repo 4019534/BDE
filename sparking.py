@@ -1,5 +1,4 @@
 from pyspark.sql import SparkSession
-import pydoop.hdfs as hdfs
 from pyspark.sql.functions import when
 
 # Initialize a Spark session
@@ -45,10 +44,10 @@ file1_updated_df = spark.read.csv("hotels_rests.csv", header=True, inferSchema=T
 filtered_df = file1_updated_df.filter(file1_updated_df['rests'] != "")
 
 # Save the filtered DataFrame to a new CSV file
-filtered_df.write.csv("onlyhotels_rests.csv", header=True, mode="overwrite")
+filtered_df.write.csv("hdfs://172.19.0.2:9000/onlyhotels_rests.csv", header=True, mode="overwrite")
 
 filtered_df.show(10)
-hdfs.put("onlyhotels_rests.csv", "hdfs://172.19.0.2:9000/")
+
 
 # Stop the Spark session
 spark.stop()
