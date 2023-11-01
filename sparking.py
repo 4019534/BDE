@@ -48,6 +48,7 @@ filtered_df = file1_updated_df.filter(file1_updated_df['rests'] != "")
 filtered_df.write.csv("onlyhotels_rests.csv", header=True, mode="overwrite")
 
 filtered_df.show(10)
+hdfs.put("onlyhotels_rests.csv", "hdfs://172.19.0.2:9000/")
 
 # Stop the Spark session
 spark.stop()
